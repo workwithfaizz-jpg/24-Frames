@@ -178,6 +178,22 @@ h2{font-size:clamp(34px,5vw,60px);line-height:1.02;letter-spacing:-.04em;font-we
 .ring::after{content:"";position:absolute;top:-7px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:4px;background:var(--amber)}
 .retainer{display:flex;flex-direction:column;justify-content:space-between;gap:18px;background:linear-gradient(145deg,rgba(240,168,60,.18),rgba(20,23,30,.7) 60%)}
 
+.world{margin-top:14px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);position:relative}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+.plan{position:relative;display:flex;flex-direction:column;gap:6px;border-radius:var(--r);border:1px solid var(--line);background:var(--card);padding:28px;min-width:0}
+.plan.pop{border-color:rgba(240,168,60,.55);background:linear-gradient(160deg,rgba(240,168,60,.14),rgba(20,23,30,.7) 55%);box-shadow:0 30px 80px -40px rgba(240,168,60,.45)}
+.plan .badge{position:absolute;top:20px;right:20px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--amber);color:#16100a}
+.plan h3{font-size:30px;font-weight:600;letter-spacing:-.03em;margin:6px 0 0}
+.plan .unit{color:var(--soft);font-weight:500}
+.plan p{color:var(--mut);margin:6px 0 4px}
+.plan ul{list-style:none;padding:0;margin:8px 0 18px;display:grid;gap:9px}
+.plan li{position:relative;padding-left:24px;color:var(--soft);font-size:15px}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--amber);font-weight:700}
+.plan .price{margin-top:auto;font-size:15px;font-weight:600;padding-top:16px;border-top:1px solid var(--line)}
+.plan .btn{margin-top:14px;justify-content:center}
+.note{text-align:center;color:var(--mut);font-size:14px;margin-top:22px}
+@media (max-width:900px){.plans{grid-template-columns:1fr}}
+
 /* process */
 .steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;position:relative}
 .steps::before{content:"";position:absolute;left:10%;right:10%;top:22px;height:1px;background:linear-gradient(90deg,transparent,var(--line2) 10%,var(--line2) 90%,transparent)}
@@ -257,14 +273,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <div class="wrap">
     <div class="nav">
       <a class="logo" href="#top"><span class="mark">24</span><span>24 Frames<small>by Faizan Ahmed</small></span></a>
-      <nav class="links" aria-label="Sections"><a href="#work">Work</a><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+      <nav class="links" aria-label="Sections"><a href="#work">Work</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#contact">Contact</a></nav>
       <div class="navr">
-        <a class="btn p sm" href="#contact">Start a project</a>
+        <a class="btn p sm" href="https://wa.me/919718088126?text=Hi%20Faizan%2C%20I%27d%20like%20to%20book%20a%20call%20about%20a%20video%20project." target="_blank" rel="noopener">Book a call</a>
         <button class="btn sm menu" id="menu-btn" type="button" aria-expanded="false" aria-controls="drawer">Menu</button>
       </div>
     </div>
     <div class="drawer" id="drawer" hidden>
-      <a href="#work">Work</a><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Contact</a>
+      <a href="#work">Work</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Contact</a>
     </div>
   </div>
 </header>
@@ -276,10 +292,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <h1><span class="g2">The video studio for brands that</span> <span class="grad">move.</span></h1>
     <p class="lede">24 Frames edits reels, ad films, YouTube long-form and AI video for <b>clinics, fitness studios, cafés, D2C brands and creators</b>. Hook-first, on-brand, delivered in every format.</p>
     <div class="ctas">
-      <a class="btn p" href="#contact">Start a project <span class="ar">→</span></a>
+      <a class="btn p" href="https://wa.me/919718088126?text=Hi%20Faizan%2C%20I%27d%20like%20to%20book%20a%20call%20about%20a%20video%20project." target="_blank" rel="noopener">Book a call <span class="ar">↗</span></a>
       <a class="btn" href="#work">See the work</a>
     </div>
     <div class="trust"><span>5+ years editing</span><span>100K+ views per YouTube video</span><span>4K delivery</span></div>
+    <div class="world">Working worldwide · US · UK · UAE · India · async-friendly</div>
 
     <div class="stage" id="stage">
       <div class="player">
@@ -399,8 +416,40 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <div class="svc w"><span class="tg">AI</span><h3>AI video</h3><p>Characters, product shots and full scenes, directed to stay on-brand.</p><div class="chips2"><span>Seedance</span><span>Kling</span><span>Higgsfield</span><span>Runway</span><span>Sora</span></div><div class="orb" aria-hidden="true"></div></div>
       <div class="svc"><span class="tg">Long-form</span><h3>YouTube & documentary</h3><p>Faceless long-form from script and voiceover.</p><div class="wave" aria-hidden="true" id="wave"></div></div>
       <div class="svc"><span class="tg">Motion</span><h3>Motion design</h3><p>Titles, explainers, mascots and 3D.</p><div class="ring" aria-hidden="true"></div></div>
-      <div class="svc w retainer"><div><span class="tg">Monthly</span><h3>Monthly retainer</h3><p>A set number of reels every month, planned, edited and delivered on schedule.</p></div><div><a class="btn p" href="#contact">Get a quote <span class="ar">→</span></a></div></div>
+      <div class="svc w retainer"><div><span class="tg">Monthly</span><h3>Monthly retainer</h3><p>A set number of reels every month, planned, edited and delivered on schedule.</p></div><div><a class="btn p" href="#pricing">See packages <span class="ar">→</span></a></div></div>
     </div>
+  </section>
+
+  <section class="wrap" id="pricing">
+    <div class="head">
+      <div class="kick">Pricing</div>
+      <h2>Simple packages. <span class="grad">Custom quotes.</span></h2>
+      <p>Every brand is different, so pricing follows your volume and format. Message on WhatsApp and get a quote within 24 hours.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <div class="kick">Short-form</div>
+        <h3>Starter</h3><div class="unit">4 reels / month</div><p>For brands starting on Reels, Shorts and TikTok.</p>
+        <ul><li>4 edited reels (9:16)</li><li>Captions & kinetic type</li><li>Sound design & music</li><li>2 revision rounds</li></ul>
+        <div class="price">Custom quote in 24h</div>
+        <a class="btn" href="https://wa.me/919718088126?text=Hi%20Faizan%2C%20I%27m%20interested%20in%20the%20Starter%20package%20%284%20reels%20/%20month%29.%20Can%20you%20share%20a%20quote%3F" target="_blank" rel="noopener">Get a quote <span class="ar">↗</span></a>
+      </div>
+      <div class="plan pop">
+        <span class="badge">Most popular</span><div class="kick">Short-form</div>
+        <h3>Growth</h3><div class="unit">12 reels / month</div><p>For brands posting consistently and scaling reach.</p>
+        <ul><li>12 edited reels (9:16)</li><li>Hook-first scripting help</li><li>Captions, motion graphics & SFX</li><li>Monthly content plan</li><li>Priority delivery</li></ul>
+        <div class="price">Custom quote in 24h</div>
+        <a class="btn p" href="https://wa.me/919718088126?text=Hi%20Faizan%2C%20I%27m%20interested%20in%20the%20Growth%20package%20%2812%20reels%20/%20month%29.%20Can%20you%20share%20a%20quote%3F" target="_blank" rel="noopener">Get a quote <span class="ar">↗</span></a>
+      </div>
+      <div class="plan">
+        <div class="kick">Long-form</div>
+        <h3>YouTube</h3><div class="unit">Per video</div><p>For creators and faceless channels.</p>
+        <ul><li>Full long-form edit (16:9)</li><li>Sourced footage & B-roll</li><li>Motion graphics & captions</li><li>Retention-focused pacing</li><li>100K+ views on every client video so far</li></ul>
+        <div class="price">Custom quote in 24h</div>
+        <a class="btn" href="https://wa.me/919718088126?text=Hi%20Faizan%2C%20I%27m%20interested%20in%20the%20YouTube%20package%20%28Per%20video%29.%20Can%20you%20share%20a%20quote%3F" target="_blank" rel="noopener">Get a quote <span class="ar">↗</span></a>
+      </div>
+    </div>
+    <p class="note">Billing in USD, GBP, AED or INR · 50% advance, 50% on delivery · Payments via Wise, PayPal or bank transfer</p>
   </section>
 
   <section class="wrap" id="process">
@@ -439,7 +488,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <div class="kick">Contact</div>
       <h2>Let's make your next <span class="grad">video.</span></h2>
       <div class="ctas">
-        <a class="btn p" href="https://wa.me/919718088126" target="_blank" rel="noopener">Message on WhatsApp <span class="ar">↗</span></a>
+        <a class="btn p" href="https://wa.me/919718088126?text=Hi%20Faizan%2C%20I%27d%20like%20to%20book%20a%20call%20about%20a%20video%20project." target="_blank" rel="noopener">Book a call on WhatsApp <span class="ar">↗</span></a>
         <a class="btn" href="https://www.instagram.com/_._faizanahmed_._/" target="_blank" rel="noopener">DM on Instagram ↗</a>
       </div>
       <div class="lines">
